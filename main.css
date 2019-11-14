@@ -1,0 +1,387 @@
+/* Global */
+
+body {
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-family: Catamaran;
+    font-size: 18px;
+    background-color: rgb(247, 248, 250);
+    color: rgb(42, 43, 42);
+    padding: 0;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.container {
+    width: 95%;
+    margin: auto;
+}
+
+/* Header */
+
+header {
+    /* background-color: rgb(242, 244, 247); */
+    background-color: rgb(247, 248, 250);
+    color: dimgray;
+    height: 80px;
+}
+
+header nav {
+    text-align: center;
+    margin-top: -42px;
+    font-size: 15px;
+    
+}
+
+header h2 {
+    margin-top: 0;
+    padding: 20px 0 0 0;
+    font-size: 20px;
+}
+
+header span {
+    color: black;
+
+}
+
+header li {
+    display: inline;
+    padding: 0 30px 0 0;
+
+}
+
+header a {
+    text-decoration: none;
+    color: dimgray;
+    padding: 5px 5px 5px 5px;
+
+}
+
+header #main a:hover {
+    background-color: rgb(242, 242, 242);
+    border-radius: 5px;
+}
+
+header label {
+    font-size: 20px;
+    float: right;
+    margin-top: -45px;
+    position: relative;
+    padding: 5px 10px;
+}
+
+header label:hover {
+    border-radius: 50%;
+    background-color: rgb(242, 242, 242);
+}
+
+header #menuSlide ul {
+    padding: 0 0 0 10px;
+
+}
+
+header #menuSlide {
+    height: 100%;
+    overflow-x: hidden;
+    background-color: #111;
+    opacity: 90%;
+    width: 25%;
+    top: 0;
+    transition: .5s;
+    position: fixed;
+    width: 0;
+    margin-left: 100%;
+    z-index: 1;
+}
+
+header #menuSlide a{
+    color: white;
+    font-size: 15px;
+    padding: 5px 0 0 0;
+    display: block;
+    margin: 5px 0;
+}
+
+header #menuSlide #buttonClose{
+    font-size: 30px;
+    margin-top: -10px
+}
+
+/* Section */
+
+#showcase {
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("./wallpaper.jpg") no-repeat center;
+    background-size: cover;
+    height: 600px;
+}
+
+#showcase h1 {
+    margin-top: 0;
+    color: white;
+    text-align: center;
+    font-size: 50px;
+    margin-bottom: 0;
+}
+
+#showcase p {
+    margin-top: 0;
+    color: white;
+    text-align: center;
+}
+
+#showcase #showcase-display {
+    padding: 300px 0 0 0;
+}
+
+#showcase h1 a {
+    text-decoration: none;
+    color: lightgreen;
+    
+}
+
+#information {
+    background-color: rgb(247, 248, 250);
+    padding: 10px 20% 10px 20%;
+    line-height: 1.8;
+    
+}
+
+#information h2 {
+    font-size: 25px
+}
+
+#information p {
+    font-size: 17px; 
+}
+
+#information a {
+    color: rgb(245, 78, 134);
+}
+
+/* Footer */
+footer {
+    background-color: black;
+    color: white;
+    /* text-align: center; */
+    padding: 10px 0;
+}
+
+/* footer #another-menu a{
+    display: block;
+    color: white;
+    text-decoration: none;
+    line-height: 2;
+    
+} */
+
+footer {
+    padding: 20px 10% 10px 10%;
+    line-height: 1.8;
+    
+}
+
+
+footer p {
+    display: none;
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer #footer-name {
+    font-size: 25px;
+    margin-bottom: 0;
+}
+
+footer #shift {
+    padding-right: 10px;
+}
+
+footer .email {
+    display: block;
+    color: lightgreen;
+}
+
+footer #footer-list {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+}
+
+footer #footer-menu-lists {
+    display: flex;
+    justify-content: space-between;
+}
+
+footer #menu-list {
+    padding-left: 0;
+    color: dimgray;
+}
+
+footer #contact-list {
+    padding-left: 80px;
+    color: dimgray;
+}
+
+footer #online-list {
+    padding-left: 80px;
+    color: dimgray;
+}
+
+footer #footer-menu-lists a {
+    text-decoration: none;
+    color: dimgray;
+}
+
+
+/* footer #footer- {
+    display: block;
+} */
+
+footer #copyright {
+    display: block;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+/* Project file */
+
+hr {
+    width: 95%;
+    color: rgb(216, 215, 215);
+}
+
+#flex-container {
+    display: flex;
+    justify-content: center;
+    /* justify-content: space-around; */
+    align-items: center;
+    flex-direction: column;
+
+
+}
+
+#box-1, #box-2, #box-3 {
+    border-radius: 10px;
+    background-color: lightgray;
+    text-align: center;
+    padding: 50px 10px 0 10px;
+    margin: 30px;
+    height: 100px;
+    width: 70%;
+    font-size: 30px
+    
+}
+
+#flex-container a {
+    color: white;
+    text-decoration: none;
+}
+
+#box-1:hover, #box-2:hover, #box-3:hover {
+    background-color: lightgreen;
+    transition: .5s;
+}
+
+#project-info {
+    margin: 0 40px 0 40px;
+}
+
+
+
+
+@media only screen and (max-width: 710px){
+
+    /* Header */
+    
+    header nav {
+        display: none;
+    }
+
+    header label {
+        margin-top: -50px;
+    }
+
+    header #menuSlide a{
+        font-size: 12px;
+    }
+
+    /* Section */
+
+    #showcase {
+        height: 400px;
+    }
+
+    #showcase h1 {
+        font-size: 30px;
+    }
+
+    #showcase p {
+        font-size: 18px;
+    }
+
+    #showcase #showcase-display{
+        padding: 200px 5px 0 5px;
+    }
+
+    #information {
+        padding: 10px 5% 0 5%;
+    }
+
+    #information p {
+        font-size: 17px; 
+    }
+    /* Footer */
+
+    footer {
+        text-align: center;
+    }
+
+    footer p {
+        display: block;
+        margin-bottom: 0;
+    }
+
+    footer #footer-list {
+        display: none;
+    }
+
+
+    footer #footer-menu-lists {
+        align-items: center;
+        flex-direction: column;
+        
+    }
+
+    footer #menu-list {
+        padding-left: 0;
+        
+    }
+    
+    footer #contact-list {
+        padding-left: 0;
+       
+    }
+    
+    footer #online-list {
+        padding-left: 0;
+    
+    }
+
+    footer #shift {
+        padding-right: 0;
+    }
+    
+
+   
+
+    /* Project file */
+
+    #flex-container {
+        align-items: center;
+        flex-direction: column;
+    }
+
+    
+}
