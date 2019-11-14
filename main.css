@@ -111,7 +111,7 @@ header #menuSlide #buttonClose{
 #showcase {
     background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("./wallpaper.jpg") no-repeat center;
     background-size: cover;
-    height: 600px;
+    height: 100vh
 }
 
 #showcase h1 {
@@ -136,6 +136,16 @@ header #menuSlide #buttonClose{
     text-decoration: none;
     color: lightgreen;
     
+}
+
+#showcase #down-arrow{
+    color: white;
+    padding-top: 25vh;
+    font-size: 30px;
+    text-decoration: none;
+    display: block;
+    margin: auto;
+    text-align: center;
 }
 
 #information {
@@ -165,13 +175,6 @@ footer {
     padding: 10px 0;
 }
 
-/* footer #another-menu a{
-    display: block;
-    color: white;
-    text-decoration: none;
-    line-height: 2;
-    
-} */
 
 footer {
     padding: 20px 10% 10px 10%;
@@ -235,10 +238,6 @@ footer #footer-menu-lists a {
 }
 
 
-/* footer #footer- {
-    display: block;
-} */
-
 footer #copyright {
     display: block;
     margin-bottom: 0;
@@ -269,7 +268,7 @@ hr {
     padding: 50px 10px 0 10px;
     margin: 30px;
     height: 100px;
-    width: 70%;
+    width: 60%;
     font-size: 30px
     
 }
@@ -309,9 +308,9 @@ hr {
 
     /* Section */
 
-    #showcase {
+    /* #showcase {
         height: 400px;
-    }
+    } */
 
     #showcase h1 {
         font-size: 30px;
