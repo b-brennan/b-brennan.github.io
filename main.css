@@ -308,9 +308,9 @@ hr {
 
     /* Section */
 
-    /* #showcase {
+    #showcase {
         height: 400px;
-    } */
+    }
 
     #showcase h1 {
         font-size: 30px;
@@ -322,6 +322,10 @@ hr {
 
     #showcase #showcase-display{
         padding: 200px 5px 0 5px;
+    }
+
+    #showcase #down-arrow {
+        display: none;
     }
 
     #information {
