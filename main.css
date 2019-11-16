@@ -174,7 +174,7 @@ header #menuSlide #buttonClose{
 
 }
 
-#showcase #arrow {
+#showcase #positioning {
     padding-top: 20vh;
     -moz-animation: bounce 3s infinite;
     -webkit-animation: bounce 3s infinite;
