@@ -130,7 +130,7 @@ header #menuSlide #buttonClose{
 /* Section */
 
 #showcase {
-    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("./wallpaper.jpg") no-repeat center;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("./wallpaper2.jpg") no-repeat center;
     background-size: cover;
     height: 95vh
 }
@@ -285,6 +285,9 @@ footer #copyright {
     text-align: center;
 }
 
+footer #copyright a {
+    color: white;
+}
 /* Project file */
 
 hr {
