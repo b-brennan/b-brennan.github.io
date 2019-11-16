@@ -160,7 +160,7 @@ header #menuSlide #buttonClose{
     
 }
 
-#showcase i {
+#showcase span {
     border: solid white;
     border-width: 0 5px 5px 0;
     display: inline-block;
