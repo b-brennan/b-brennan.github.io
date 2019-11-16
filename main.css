@@ -28,7 +28,7 @@ header {
 header nav {
     text-align: center;
     margin-top: -42px;
-    font-size: 15px;
+    font-size: 16px;
     
 }
 
@@ -67,7 +67,27 @@ header label {
     margin-top: -45px;
     position: relative;
     padding: 5px 10px;
+    /* display: none; */
 }
+
+header #hamburger {
+    display: none;
+}
+
+
+header #symbol-label {
+    /* border-radius: 50%; */
+    background-color: rgb(242, 242, 242);
+    border: 2px solid dimgray;
+    font-weight: 550;
+}
+
+/* header #initials-circle {
+    display: block;
+    font-size: 25px;
+    /* border: 2px solid black;
+    border-radius: 50%; 
+} */
 
 header label:hover {
     border-radius: 50%;
@@ -75,7 +95,7 @@ header label:hover {
 }
 
 header #menuSlide ul {
-    padding: 0 0 0 10px;
+    padding: 0 0 0 20px;
 
 }
 
@@ -111,7 +131,7 @@ header #menuSlide #buttonClose{
 #showcase {
     background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("./wallpaper.jpg") no-repeat center;
     background-size: cover;
-    height: 100vh
+    height: 95vh
 }
 
 #showcase h1 {
@@ -129,7 +149,7 @@ header #menuSlide #buttonClose{
 }
 
 #showcase #showcase-display {
-    padding: 300px 0 0 0;
+    padding: 45vh 0 0 0;
 }
 
 #showcase h1 a {
@@ -138,9 +158,9 @@ header #menuSlide #buttonClose{
     
 }
 
-#showcase #down-arrow{
+#down-arrow{
     color: white;
-    padding-top: 25vh;
+    padding-top: 20vh;
     font-size: 30px;
     text-decoration: none;
     display: block;
@@ -151,6 +171,7 @@ header #menuSlide #buttonClose{
     -webkit-animation: bounce 3s infinite;
     animation: bounce 3s infinite;
 }
+
 
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
@@ -292,7 +313,7 @@ hr {
 }
 
 #flex-container a {
-    color: white;
+    color: dimgray;
     text-decoration: none;
 }
 
@@ -322,6 +343,18 @@ hr {
 
     header #menuSlide a{
         font-size: 12px;
+    }
+
+    header #menuSlide ul {
+        padding-left: 15px;
+    }
+
+    header #hamburger {
+        display: block;
+    }
+
+    header #symbol {
+        display: none;
     }
 
     /* Section */
