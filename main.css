@@ -3,6 +3,7 @@
 body {
     /* font-family: Arial, Helvetica, sans-serif; */
     font-family: Catamaran;
+    font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     background-color: rgb(247, 248, 250);
     color: rgb(42, 43, 42);
@@ -150,6 +151,7 @@ header #menuSlide #buttonClose{
 
 #showcase #showcase-display {
     padding: 45vh 0 0 0;
+    
 }
 
 #showcase h1 a {
