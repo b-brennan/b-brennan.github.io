@@ -90,10 +90,10 @@ header #symbol-label {
     border-radius: 50%; 
 } */
 
-header label:hover {
+/* header label:hover {
     border-radius: 50%;
     background-color: rgb(242, 242, 242);
-}
+} */
 
 header #menuSlide ul {
     padding: 0 0 0 20px;
