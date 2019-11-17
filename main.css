@@ -83,17 +83,6 @@ header #symbol-label {
     font-weight: 550;
 }
 
-/* header #initials-circle {
-    display: block;
-    font-size: 25px;
-    /* border: 2px solid black;
-    border-radius: 50%; 
-} */
-
-/* header label:hover {
-    border-radius: 50%;
-    background-color: rgb(242, 242, 242);
-} */
 
 header #menuSlide ul {
     padding: 0 0 0 20px;
@@ -130,7 +119,7 @@ header #menuSlide #buttonClose{
 /* Section */
 
 #showcase {
-    background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url("./wallpaper2.jpg") no-repeat center;
+    background: linear-gradient( rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.62) ), url("./wallpaper2.jpg") no-repeat center;
     background-size: cover;
     height: 95vh
 }
@@ -333,6 +322,7 @@ hr {
 #box-1:hover, #box-2:hover, #box-3:hover {
     background-color: lightgreen;
     transition: .5s;
+    width: 65%;
 }
 
 #project-info {
