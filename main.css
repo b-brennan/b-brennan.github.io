@@ -302,7 +302,7 @@ hr {
 
 }
 
-#box-1, #box-2, #box-3 {
+#box-1, #box-2, #box-3, #box-4 {
     border-radius: 10px;
     background-color: lightgray;
     text-align: center;
@@ -322,7 +322,7 @@ hr {
     text-decoration: none;
 }
 
-#box-1:hover, #box-2:hover, #box-3:hover {
+#box-1:hover, #box-2:hover, #box-3:hover, #box-4:hover {
     background-color: lightgreen;
     transition: .5s;
     width: 65%;
@@ -445,6 +445,8 @@ hr {
     #flex-container {
         align-items: center;
         flex-direction: column;
+        text-align: center;
+        
     }
 
     
