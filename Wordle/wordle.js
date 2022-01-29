@@ -9,6 +9,15 @@ document.addEventListener("DOMContentLoaded", () => {
     createSquares(letters, guesses)
     createKeyboard()
 
+    // ensures board looks decent on all devices.
+    window.addEventListener('resize', () =>{
+        const gameboard = document.getElementById("board")
+        let width = window.screen.availHeight - 250;
+        gameboard.style = `width: ${.83*width}px; height: 100%;`
+        
+    })
+
+
     // This will allow user to use phiscal keyboard as well as one in game
     window.addEventListener("keydown", (e) =>{
         const pressedLetter = e.key.toLowerCase()
@@ -93,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let squareID = 1
         const gameboard = document.getElementById("board")
         let width = window.screen.availHeight - 250;
-        gameboard.style = `width: ${83}vw; height: 100%;`
+        gameboard.style = `width: ${.83*width}px; height: 100%;`
 
         for (let i = 0; i < guesses; i ++){
             const row = document.createElement("div")
