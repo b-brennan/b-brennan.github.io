@@ -20,6 +20,7 @@ html, body {
 #game {
     width: 100%;
     max-width: 500px;
+    margin: 0 auto;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -27,6 +28,10 @@ html, body {
 }
 
 header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
     border-bottom: 2px solid rgb(58, 58, 60);
 }
 
@@ -48,24 +53,35 @@ header {
 
 #board{
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
     grid-gap: 5px;
     padding: 10px;
     box-sizing: border-box;
+    max-width: 350px;
+    max-height: 420px;
+}
+
+.game-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 5px;
 }
 
 .square {
     border: 2px solid rgb(58, 58, 60);
-    min-width: 60px; 
-    min-height: 60px;
-    font-size: 2.5rem;
-    color: gainsboro;
-    text-transform: uppercase;
-    display: flex;
+    width: 100%;
     justify-content: center;
     align-items: center;
-
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    font-weight: bold;
+    vertical-align: middle;
+    box-sizing: border-box;
+    color: gainsboro;
+    text-transform: uppercase;
+    display: inline-flex;
 }
+
 
 #keyboard-container {
     height: 200px;
@@ -74,7 +90,7 @@ header {
 .keyboard-row {
     display: flex;
     justify-content: center;
-    width: 100%;
+    margin: 0 auto 8px;
     touch-action: manipulation;
 }
 
@@ -99,5 +115,5 @@ header {
 }
 
 .spacer-half {
-    flex-grow: 0.4;
+    flex-grow: 0.5;
 }

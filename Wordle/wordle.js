@@ -9,6 +9,24 @@ document.addEventListener("DOMContentLoaded", () => {
     createSquares(letters, guesses)
     createKeyboard()
 
+    // This will allow user to use phiscal keyboard as well as one in game
+    window.addEventListener("keydown", (e) =>{
+        const pressedLetter = e.key.toLowerCase()
+        if (pressedLetter === 'enter'){
+            validateCurrWord()
+            return
+        }
+        if (pressedLetter === 'backspace'){
+            removeLetter()
+            return
+        }
+        if (/^[a-z]$/.test(pressedLetter)){
+            updateGuessedWords(pressedLetter)
+        }
+        
+    })
+
+
     function getTileColor(letter, index) {
         const isCorrectLetter = correctWord.includes(letter)
         const letterAtPostion = correctWord.charAt(index)
@@ -23,49 +41,72 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function validateCurrWord(){
-        currWord = getCurrentGuessedWord()
-        const currWordString = currWord.join('')
+    function setCorrectColors(currentWord){
         const firstSquareID = letters * guessedWordCount + 1
         const interval = 200
 
-        
-        if (currWord.length !== letters){
-            window.alert(`Word must be ${letters} letters`)
-            return
-        } 
-        currWord.forEach((letter, index) => {
+        // set color for squares
+        currentWord.forEach((letter, index) => {
             setTimeout(() => {
                 const squareColor = getTileColor(letter, index)
                 const currSquareID = firstSquareID + index
                 const currSquare = document.getElementById(currSquareID)
                 currSquare.classList.add("animate__rollIn")
                 currSquare.style = `background-color:${squareColor}; border-color:${squareColor}` 
+
             }, interval * index)
         })
         guessedWordCount += 1
 
+        // set color for keyboard keys
+        for (let i = 0; i < currentWord.length; i++){
+            const key = document.getElementById(currentWord[i])
+            const keyColor = getTileColor(currentWord[i], i)
+            key.style = `background-color:${keyColor}`
+        }
+    }
+
+    function validateCurrWord(){
+        currWord = getCurrentGuessedWord()
+        const currWordString = currWord.join('')
+        
+        if (currWord.length !== letters){
+            window.alert(`Word must be ${letters} letters`)
+            return
+        } 
+
         if (currWordString === correctWord){
+            setCorrectColors(currWord)
             window.alert("You did it! I knew you had it in you...")
         }
         else if (guessedWords.length === guesses) {
+            setCorrectColors(currWord)
             window.alert(`So close, the word was ${correctWord}! Maybe next time...`)
         }
         else {
+            setCorrectColors(currWord)
             guessedWords.push([])
         }
     }
 
     function createSquares(letters, guesses){
-        
+        let squareID = 1
         const gameboard = document.getElementById("board")
+        let width = window.screen.availHeight - 250;
+        gameboard.style = `width: ${83}vw; height: 100%;`
 
-        for (let i = 0; i < (letters*guesses); i ++){
-            let square = document.createElement("div")
-            square.classList.add("square") 
-            square.classList.add("animate__animated") 
-            square.setAttribute("id", i + 1)
-            gameboard.appendChild(square)
+        for (let i = 0; i < guesses; i ++){
+            const row = document.createElement("div")
+            row.classList.add("game-row")
+            for( let j = 0; j < letters; j++){
+                let square = document.createElement("div")
+                square.classList.add("square") 
+                square.classList.add("animate__animated") 
+                square.setAttribute("id", squareID)
+                row.appendChild(square)
+                squareID++
+            }
+            gameboard.appendChild(row)
         }
     }
 
