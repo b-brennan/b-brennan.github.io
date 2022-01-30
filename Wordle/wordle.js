@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (letterAtPostion === letter){
             return "rgb(72, 138, 77)"
         }else{
-            return "rgb(177, 191, 86)"
+            return "rgb(227, 196, 73)"
         }
     }
 
