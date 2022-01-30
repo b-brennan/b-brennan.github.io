@@ -13,12 +13,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // toggle hard mode on and off
     toggle.onclick = () => {
-        if (toggle.checked){
-            hardModeActivated = true
+        if (guessedWordCount === 0){
+            if (toggle.checked){
+                hardModeActivated = true
+            }else {
+                hardModeActivated = false
+            }
         }else {
-            hardModeActivated = false
+            if (toggle.checked){
+                toggle.checked = false
+            } else {
+                toggle.checked = true
+            }
+            window.alert("Sorry! You can't switch modes mid-game.")
         }
-        console.log(hardModeActivated)
     }
 
     // ensures board looks decent on all devices.
@@ -38,10 +46,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         if (pressedLetter === 'backspace'){
             removeLetter()
+            pickLetterAnimation(false)
             return
         }
         if (/^[a-z]$/.test(pressedLetter)){
             updateGuessedWords(pressedLetter)
+            pickLetterAnimation(true)
         }
         
     })
@@ -50,6 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function getTileColor(letter, index) {
         const isCorrectLetter = correctWord.includes(letter)
         const letterAtPostion = correctWord.charAt(index)
+        let copyOfCorrect = correctWord
+
 
         if (!isCorrectLetter){
             return "rgb(58, 58, 60)"
@@ -63,7 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function getTileColorHardMode(letter, index) {
         const isCorrectLetter = correctWord.includes(letter)
-        const letterAtPostion = correctWord.charAt(index)
 
         if (!isCorrectLetter){
             return "rgb(194, 58, 58)"
@@ -165,6 +176,16 @@ document.addEventListener("DOMContentLoaded", () => {
         availableSpace = availableSpace - 1
         currWord.pop()
     }
+
+    // set animation for current square if letter typed, and previous if DEL typed.
+    function pickLetterAnimation(bool){
+        const currSquare = document.getElementById(String(availableSpace -1))
+        const prevSquare = document.getElementById(String(availableSpace))
+        if (bool){
+            currSquare.style = "border-color: #666; animation-name:press; animation-duration:100ms;"
+        }else
+            prevSquare.style = "border-color: rgb(58, 58, 60);"
+    }
     
     function createKeyboard(){
         for (let i = 0; i < keys.length; i++) {
@@ -177,9 +198,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 if (key === 'del'){
                     removeLetter()
+                    pickLetterAnimation(false)
                     return
                 }
                 updateGuessedWords(key)
+                pickLetterAnimation(true)
             }
         }
     
@@ -192,9 +215,8 @@ document.addEventListener("DOMContentLoaded", () => {
             currWord.push(letter)
 
             currAvailableSpace = document.getElementById(String(availableSpace))
-            availableSpace = availableSpace + 1 
-
             currAvailableSpace.textContent = letter
+            availableSpace = availableSpace + 1 
         }
 
     }
