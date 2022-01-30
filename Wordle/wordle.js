@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
         currentWord.forEach((letter, index) => {
             setTimeout(() => {
                 if (hardModeActivated){
-                    console.log(letter + squareColor)
+                    squareColor = getTileColorHardMode(letter,index)
                 }
                 else{
                     squareColor = getTileColor(letter, index)
