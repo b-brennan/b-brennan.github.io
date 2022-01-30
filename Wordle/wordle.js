@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const toggle = document.getElementById("cbx")
     let guessedWords = [[]]
     let availableSpace = 1
-    let correctWord = "bully"
+    let correctWord = "enter"
     let guessedWordCount = 0
     let hardModeActivated = false
     createSquares(letters, guesses)
