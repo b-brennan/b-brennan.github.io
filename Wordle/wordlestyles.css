@@ -57,6 +57,31 @@ header {
     text-transform: uppercase;
 }
 
+#info {
+    cursor: pointer;
+}
+
+div#info-text {
+    display: none;
+    border:1px solid gainsboro;
+    height:30px;
+    width:290px;
+    margin-left:50px;
+    padding: 0 5px 5px 5px;
+    background-color: gainsboro;
+    color: rgb(39, 38, 38);
+    border-radius: 3px;
+    justify-content: center;
+    align-items: center;
+}
+
+div#info:hover + div#info-text {
+    display: block;
+    position: absolute;
+    margin-top: 30px;
+    
+}
+
 /* start of toggle css*/
 .toggle {
     position: relative;
@@ -67,6 +92,7 @@ header {
     -webkit-tap-highlight-color: transparent;
     transform: translate3d(0,0,0);
     }
+    
 .toggle:before {
     content: "";
     position: relative;
