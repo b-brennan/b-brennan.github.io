@@ -2,19 +2,30 @@ document.addEventListener("DOMContentLoaded", () => {
     const letters = 5
     const guesses = 6
     const keys = document.querySelectorAll('.keyboard-row button')
+    const toggle = document.getElementById("cbx")
     let guessedWords = [[]]
     let availableSpace = 1
     let correctWord = "bully"
     let guessedWordCount = 0
+    let hardModeActivated = false
     createSquares(letters, guesses)
     createKeyboard()
 
+    // toggle hard mode on and off
+    toggle.onclick = () => {
+        if (toggle.checked){
+            hardModeActivated = true
+        }else {
+            hardModeActivated = false
+        }
+        console.log(hardModeActivated)
+    }
+
     // ensures board looks decent on all devices.
-    window.addEventListener('resize', () =>{
+    window.addEventListener("resize", () =>{
         const gameboard = document.getElementById("board")
-        let width = window.screen.availHeight - 250;
-        gameboard.style = `width: ${.83*width}px; height: 100%;`
-        
+        const height = window.screen.availHeight - 250;
+        gameboard.style = `width: ${(.83*height)}px; height: 100%;`
     })
 
 
@@ -50,14 +61,32 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    function getTileColorHardMode(letter, index) {
+        const isCorrectLetter = correctWord.includes(letter)
+        const letterAtPostion = correctWord.charAt(index)
+
+        if (!isCorrectLetter){
+            return "rgb(194, 58, 58)"
+        }else{
+            return "rgb(58, 58, 60)"
+        }
+    }
+
     function setCorrectColors(currentWord){
         const firstSquareID = letters * guessedWordCount + 1
         const interval = 200
+        let squareColor = ''
+        let keyColor = ''
 
         // set color for squares
         currentWord.forEach((letter, index) => {
             setTimeout(() => {
-                const squareColor = getTileColor(letter, index)
+                if (hardModeActivated){
+                    console.log(letter + squareColor)
+                }
+                else{
+                    squareColor = getTileColor(letter, index)
+                }
                 const currSquareID = firstSquareID + index
                 const currSquare = document.getElementById(currSquareID)
                 currSquare.classList.add("animate__rollIn")
@@ -70,7 +99,12 @@ document.addEventListener("DOMContentLoaded", () => {
         // set color for keyboard keys
         for (let i = 0; i < currentWord.length; i++){
             const key = document.getElementById(currentWord[i])
-            const keyColor = getTileColor(currentWord[i], i)
+            if (hardModeActivated){
+                keyColor = getTileColorHardMode(currentWord[i], i)
+            }
+            else{
+                keyColor = getTileColor(currentWord[i], i)
+            }
             key.style = `background-color:${keyColor}`
         }
     }
@@ -101,8 +135,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function createSquares(letters, guesses){
         let squareID = 1
         const gameboard = document.getElementById("board")
-        let width = window.screen.availHeight - 250;
-        gameboard.style = `width: ${.83*width}px; height: 100%;`
+        const height = window.screen.availHeight - 250;
+        gameboard.style = `width: ${(.83*height)}px; height: 100%;`
 
         for (let i = 0; i < guesses; i ++){
             const row = document.createElement("div")
