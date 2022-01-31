@@ -29,18 +29,40 @@ html, body {
 
 header {
     display: flex;
-    justify-content: center;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     height: 50px;
     border-bottom: 2px solid rgb(58, 58, 60);
+}
+
+#theme-select {
+    color: gainsboro;
+    text-align: left;  
+    z-index: 1;
+}
+
+#night {
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+    color: rgb(39, 38, 38);
+}
+
+#day {
+    font-size: 1.5rem;
+    cursor: pointer;
 }
 
 .title {
     color: gainsboro;
     font-size: 2.5rem;
     font-weight: bold;
-    text-align: center;
     margin: 0.4rem 0 0.4rem 0;
+    text-align: center;
+    flex: 1;
+    margin-left: -15px;
+    
 }
 
 #toggle {

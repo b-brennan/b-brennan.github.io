@@ -3,14 +3,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const guesses = 6
     const keys = document.querySelectorAll('.keyboard-row button')
     const toggle = document.getElementById("cbx")
+    const dayIcon = document.getElementById("day")
+    const nightIcon = document.getElementById("night")
+    const themeSelector = document.getElementById("theme-select")
     let guessedWords = [[]]
     let availableSpace = 1
-    let correctWord = "enter"
+    let correctWord = "pasty"
     let guessedWordCount = 0
     let hardModeActivated = false
     createSquares(letters, guesses)
     createKeyboard()
-
+    
+    
     // toggle hard mode on and off
     toggle.onclick = () => {
         if (guessedWordCount === 0){
@@ -28,6 +32,25 @@ document.addEventListener("DOMContentLoaded", () => {
             window.alert("Sorry! You can't switch modes mid-game.")
         }
     }
+
+    // set theme TODO
+    themeSelector.onclick = () => {
+         if (window.getComputedStyle(dayIcon).display === "block") {
+             dayIcon.style = "display:none;"
+             nightIcon.style = "display:block;"
+            //  document.getElementById("container").style = "background-color:gainsboro;"
+            //  document.getElementById("wordle").style = "color: rgb(39, 38, 38);"
+             return
+         }
+         if (window.getComputedStyle(nightIcon).display === "block") {
+             nightIcon.style = "display:none;"
+             dayIcon.style = "display:block;"
+            //  document.getElementById("container").style = "background-color:rgb(39, 38, 38);"
+            //  document.getElementById("wordle").style = "color: gainsboro;"
+             return
+         }
+    }   
+  
 
     // ensures board looks decent on all devices.
     window.addEventListener("resize", () =>{
