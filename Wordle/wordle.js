@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const themeSelector = document.getElementById("theme-select")
     let guessedWords = [[]]
     let availableSpace = 1
-    let correctWord = "bongo"
+    let correctWord = "bingo"
     let guessedWordCount = 0
     let hardModeActivated = false
     createSquares(letters, guesses)
@@ -33,22 +33,53 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // set theme TODO
+    // set theme
     themeSelector.onclick = () => {
-         if (window.getComputedStyle(dayIcon).display === "block") {
-             dayIcon.style = "display:none;"
-             nightIcon.style = "display:block;"
-            //  document.getElementById("container").style = "background-color:gainsboro;"
-            //  document.getElementById("wordle").style = "color: rgb(39, 38, 38);"
-             return
-         }
-         if (window.getComputedStyle(nightIcon).display === "block") {
-             nightIcon.style = "display:none;"
-             dayIcon.style = "display:block;"
-            //  document.getElementById("container").style = "background-color:rgb(39, 38, 38);"
-            //  document.getElementById("wordle").style = "color: gainsboro;"
-             return
-         }
+        //  if (window.getComputedStyle(dayIcon).display === "block") {
+        //      dayIcon.style = "display:none;"
+        //      nightIcon.style = "display:block;"
+        //      document.getElementById("container").style = "background-color:white;"
+        //      document.getElementById("wordle").style = "color: rgb(17, 17, 17);"
+        //      document.getElementById("header").style = "border-bottom: 1px solid gainsboro"
+          
+        //      let modeLabels = document.getElementsByClassName("mode")
+        //      for (let i = 0; i < modeLabels.length; i++) {
+        //          modeLabels[i].style = "color: rgb(17, 17, 17);"
+        //      }
+
+        //      for (let i = 0; i < (letters*guesses); i++) {
+        //         document.getElementById(String(i+1)).style = "border: 2px solid gainsboro; color: rgb(58, 58, 60);"
+        //      }
+        //      console.log(document.getElementById("4").style)
+
+        //      for (let i = 0; i < (keys.length); i++) {
+        //         keys[i].style = "color: rgb(17, 17,17); background-color: gainsboro;"
+        //      }
+
+
+        //      return
+        //  }
+        //  if (window.getComputedStyle(nightIcon).display === "block") {
+        //      nightIcon.style = "display:none;"
+        //      dayIcon.style = "display:block;"
+        //      document.getElementById("container").style = "background-color:rgb(17, 17, 17); border: 1px solid rgb(17, 17, 17);"
+        //      document.getElementById("wordle").style = "color: gainsboro;"
+        //      document.getElementById("header").style = "border-bottom: 1px solid rgb(58, 58, 60), color: gainsboro;"
+
+        //      let modeLabels = document.getElementsByClassName("mode")
+        //      for (let i = 0; i < modeLabels.length; i++) {
+        //          modeLabels[i].style = "color: gainsboro;"
+        //      }
+
+        //      for (let i = 0; i < (letters*guesses); i++) {
+        //         document.getElementById(String(i+1)).style = "2px solid rgb(58, 58, 60); color: gainsboro;"
+        //      }
+
+        //      for (let i = 0; i < (keys.length); i++) {
+        //         keys[i].style = "color: gainsboro; background-color: rgb(129, 131, 132);"
+        //      }
+        //      return
+        //  }
     }   
   
 
@@ -80,19 +111,21 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
 
-    function getTileColor(letter, index) {
-        const isCorrectLetter = correctWord.includes(letter)
-        const letterAtPostion = correctWord.charAt(index)
-        let copyOfCorrect = correctWord
+    function getTileColor(letter, index, copy) {
+        const isCorrectLetter = copy.includes(letter)
+        const letterAtPostion = copy.charAt(index)
+
 
 
         if (!isCorrectLetter){
-            return "rgb(58, 58, 60)"
+            return ["rgb(58, 58, 60)", copy]
         }
         if (letterAtPostion === letter){
-            return "rgb(72, 138, 77)"
+            copy = copy.replace(letterAtPostion, '.')
+            return ["rgb(72, 138, 77)", copy]
         }else{
-            return "rgb(227, 196, 73)"
+            copy = copy.replace(letter, '.')
+            return ["rgb(227, 196, 73)", copy]
         }
     }
 
@@ -102,31 +135,35 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!isCorrectLetter){
             return "rgb(194, 58, 58)"
         }else{
-            return "rgb(58, 58, 60)"
+            return "rgb(129, 131, 132);"
         }
     }
 
     function setCorrectColors(currentWord){
         const firstSquareID = letters * guessedWordCount + 1
-        const interval = 200
+        const interval = 300
         let squareColor = ''
         let keyColor = ''
+        let tileWordCopy = correctWord
+        let keyWordCopy = correctWord
 
         // set color for squares
         currentWord.forEach((letter, index) => {
             setTimeout(() => {
                 if (hardModeActivated){
-                    squareColor = getTileColorHardMode(letter,index)
+                    squareColor = getTileColorHardMode(letter, index)
                 }
                 else{
-                    squareColor = getTileColor(letter, index)
+                    result = getTileColor(letter, index, tileWordCopy)
+                    squareColor = result[0]
+                    tileWordCopy = result[1]
                 }
                 const currSquareID = firstSquareID + index
                 const currSquare = document.getElementById(currSquareID)
                 currSquare.classList.add("animate__rollIn")
                 currSquare.style = `background-color:${squareColor}; border-color:${squareColor}` 
 
-            }, interval * index)
+            }, interval * (index))
         })
         guessedWordCount += 1
 
@@ -137,9 +174,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 keyColor = getTileColorHardMode(currentWord[i], i)
             }
             else{
-                keyColor = getTileColor(currentWord[i], i)
+                result = getTileColor(currentWord[i], i, keyWordCopy)
+                keyColor = result[0]
+                keyWordCopy = result[1]
             }
-            key.style = `background-color:${keyColor}`
+            if (key.bestColor != "rgb(72, 138, 77)") {
+                key.bestColor = keyColor
+                key.style = `background-color:${keyColor}`
+            }
+            // key.style = `background-color:${keyColor}`
         }
     }
 
@@ -248,4 +291,5 @@ document.addEventListener("DOMContentLoaded", () => {
         const numberOfGuessedWords = guessedWords.length
         return guessedWords[numberOfGuessedWords - 1]
     }
+
 })

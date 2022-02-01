@@ -11,7 +11,7 @@ html, body {
 
 #container {
     display: flex;
-    background-color: rgb(39, 38, 38);
+    background-color: rgb(17, 17, 17);
     height: 100%;
     align-items: center;
     flex-direction: column;
@@ -33,25 +33,28 @@ header {
     align-items: center;
     justify-content: space-between;
     height: 50px;
-    border-bottom: 2px solid rgb(58, 58, 60);
+    border-bottom: 1px solid rgb(58, 58, 60);
 }
 
 #theme-select {
+    align-items: center;
     color: gainsboro;
     text-align: left;  
     z-index: 1;
 }
 
 #night {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     cursor: pointer;
     display: none;
-    color: rgb(39, 38, 38);
+    color: rgb(17, 17, 17);
+
 }
 
 #day {
     font-size: 1.5rem;
     cursor: pointer;
+
 }
 
 .title {
@@ -110,7 +113,7 @@ span {
     width: 20px;
     height: 20px;
     display: block;
-    background: white;
+    background: gainsboro;
     border-radius: 10px;
     box-shadow: 0 3px 8px rgba(#9A9999,.5);
     transition: all .2s ease;
