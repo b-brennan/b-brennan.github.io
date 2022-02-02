@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const themeSelector = document.getElementById("theme-select")
     let guessedWords = [[]]
     let availableSpace = 1
-    let correctWord = "bongo"
+    let correctWord = "ghost"
     let guessedWordCount = 0
     let hardModeActivated = false
     createSquares(letters, guesses)
@@ -110,21 +110,17 @@ document.addEventListener("DOMContentLoaded", () => {
         
     })
 
-
-    function getTileColor(letter, index, copy) {
-        const isCorrectLetter = copy.includes(letter)
-        const letterAtPostion = copy.charAt(index)
-
-
-
-        if (!isCorrectLetter){
+    // logic accounts for double letter guess when only one instance exists in correct word
+    function getTileColor(letter, index, copy, guessedWord) {
+        const isLetterInWord = copy.includes(letter)
+        const correctLetterAtIndex = copy.charAt(index)
+        const guessedWordString = guessedWord.join('')
+        
+        if (!isLetterInWord){
             return ["rgb(58, 58, 60)", copy]
-        }
-        if (letterAtPostion === letter){
-            copy = copy.replace(letterAtPostion, '.')
+        } else if (correctLetterAtIndex === letter){
             return ["rgb(72, 138, 77)", copy]
-        }else{
-            copy = copy.replace(letter, '.')
+        } else {
             return ["rgb(227, 196, 73)", copy]
         }
     }
@@ -146,6 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let keyColor = ''
         let tileWordCopy = correctWord
         let keyWordCopy = correctWord
+        const guessedWord = getCurrentGuessedWord()
 
         // set color for squares
         currentWord.forEach((letter, index) => {
@@ -154,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     squareColor = getTileColorHardMode(letter, index)
                 }
                 else{
-                    result = getTileColor(letter, index, tileWordCopy)
+                    result = getTileColor(letter, index, tileWordCopy, guessedWord)
                     squareColor = result[0]
                     tileWordCopy = result[1]
                 }
@@ -174,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 keyColor = getTileColorHardMode(currentWord[i], i)
             }
             else{
-                result = getTileColor(currentWord[i], i, keyWordCopy)
+                result = getTileColor(currentWord[i], i, keyWordCopy, guessedWord)
                 keyColor = result[0]
                 keyWordCopy = result[1]
             }
@@ -288,7 +285,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function getCurrentGuessedWord() {
-        const numberOfGuessedWords = guessedWords.length
+        const numberOfGuessedWords = guessedWords.length 
         return guessedWords[numberOfGuessedWords - 1]
     }
 
