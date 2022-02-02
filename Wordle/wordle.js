@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const themeSelector = document.getElementById("theme-select")
     let guessedWords = [[]]
     let availableSpace = 1
-    let correctWord = "ghost"
+    let correctWord = "gnome"
     let guessedWordCount = 0
     let hardModeActivated = false
     createSquares(letters, guesses)
