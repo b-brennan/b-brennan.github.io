@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const hideLetters = document.getElementById("hide-icon")
     let guessedWords = [[]]
     let availableSpace = 1
-    let correctWord = "gnome"
+    let correctWord = "bugle"
     let guessedWordCount = 0
     let hardModeActivated = false
     createSquares(letters, guesses)
