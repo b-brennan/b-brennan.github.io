@@ -34,17 +34,27 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // hide letters so user can screenshot and share results
+    // hide letters  and key colors so user can screenshot and share results
     hideLetters.onclick = () => {
         for (let i = 0; i < (letters*guesses); i++){
             let squareText = document.getElementById(String(i+1))
             if (squareText.textContent !== ""){
                 squareText.textContent = ""
             }else{
-                squareText.textContent = squareText.dataLetter
+                squareText.textContent = squareText.dataset.dataLetter
+            }
+        }
+
+        for (let i = 0; i < keys.length; i++) {
+            if (keys[i].dataset.bestColor !== "grey" && keys[i].style.backgroundColor !== "rgb(129, 131, 132)"){
+                keys[i].style = "background-color: rgb(129, 131, 132);"
+            } else {
+                keys[i].style = `background-color: ${keys[i].dataset.bestColor};`
             }
         }
     }
+
+   
 
     // set theme
     themeSelector.onclick = () => {
@@ -188,11 +198,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 keyColor = result[0]
                 keyWordCopy = result[1]
             }
-            if (key.bestColor != "rgb(72, 138, 77)") {
-                key.bestColor = keyColor
+            if (key.dataset.bestColor != "rgb(72, 138, 77)") {
+                key.dataset.bestColor = keyColor
                 key.style = `background-color:${keyColor}`
             }
-            // key.style = `background-color:${keyColor}`
         }
     }
 
@@ -293,7 +302,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             currAvailableSpace = document.getElementById(String(availableSpace))
             currAvailableSpace.textContent = letter
-            currAvailableSpace.dataLetter = String(letter)
+            currAvailableSpace.dataset.dataLetter = String(letter)
             availableSpace = availableSpace + 1 
         }
 
