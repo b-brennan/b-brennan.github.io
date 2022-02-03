@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const dayIcon = document.getElementById("day")
     const nightIcon = document.getElementById("night")
     const themeSelector = document.getElementById("theme-select")
+    const hideLetters = document.getElementById("hide-icon")
     let guessedWords = [[]]
     let availableSpace = 1
     let correctWord = "gnome"
@@ -30,6 +31,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 toggle.checked = true
             }
             window.alert("Sorry! You can't switch modes mid-game.")
+        }
+    }
+
+    // hide letters so user can screenshot and share results
+    hideLetters.onclick = () => {
+        for (let i = 0; i < (letters*guesses); i++){
+            let squareText = document.getElementById(String(i+1))
+            if (squareText.textContent !== ""){
+                squareText.textContent = ""
+            }else{
+                squareText.textContent = squareText.dataLetter
+            }
         }
     }
 
@@ -220,6 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 square.classList.add("square") 
                 square.classList.add("animate__animated") 
                 square.setAttribute("id", squareID)
+                square.setAttribute("data-letter", "")
                 row.appendChild(square)
                 squareID++
             }
@@ -279,6 +293,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             currAvailableSpace = document.getElementById(String(availableSpace))
             currAvailableSpace.textContent = letter
+            currAvailableSpace.dataLetter = String(letter)
             availableSpace = availableSpace + 1 
         }
 
