@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             guessedWords = storedGuessedWords
             availableSpace = Number(storedAvailableSpace)
-            hardModeActivated = Boolean(storedHardMode)
+            hardModeActivated = getBooleanValue(storedHardMode)
         }
             
         if (correctWord === storedCorrectWord){
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
             window.localStorage.setItem("correctWord", correctWord)
             guessedWords = [[]]
             availableSpace = 1
-            hardMode = false
+            hardModeActivated = false
         }
     }
 
@@ -55,6 +55,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     function updateHardMode(hardMode){
         window.localStorage.setItem("hardMode", hardMode)
+    }
+    function getBooleanValue(bool){
+        if (bool === "true"){
+            return true
+        }else {
+            return false
+        }
     }
 
     function drawGuessedWords(guessedWords){
@@ -97,12 +104,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // hide letters  and key colors so user can screenshot and share results
     hideLetters.onclick = () => {
+        let drawLetters = false
         for (let i = 0; i < (letters*guesses); i++){
             let squareText = document.getElementById(String(i+1))
             if (squareText.textContent !== ""){
                 squareText.textContent = ""
             }else{
                 squareText.textContent = squareText.dataset.dataLetter
+                drawLetters = true
             }
         }
 
@@ -248,7 +257,6 @@ document.addEventListener("DOMContentLoaded", () => {
         })
 
         guessedWordCount += 1
-        // updateGuessedWordCount(guessedWordCount)
 
         // set color for keyboard keys
         for (let i = 0; i < currentWord.length; i++){
