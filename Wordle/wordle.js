@@ -42,8 +42,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }else {
             window.localStorage.setItem("correctWord", correctWord)
             guessedWords = [[]]
+            window.localStorage.setItem("guessedWords", JSON.stringify(guessedWords))
             availableSpace = 1
+            window.localStorage.setItem("availableSpace", availableSpace)
             hardModeActivated = false
+            window.localStorage.setItem("hardMode", hardModeActivated)
         }
     }
 
