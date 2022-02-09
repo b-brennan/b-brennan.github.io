@@ -209,12 +209,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // logic accounts for double letter guess when only one instance exists in correct word
     function getNonGreenTileColor(letter, index, copy) {
         const isLetterInWord = copy.includes(letter)
-        const correctLetterAtIndex = copy.charAt(index)
+        const indexOfLetterInCorrectWord = copy.indexOf(letter)
         
         if (!isLetterInWord){
             return ["rgb(58, 58, 60)", copy]
         } else {
-            copy = setCharAt(copy, index, '.')
+            copy = setCharAt(copy, indexOfLetterInCorrectWord, ".")
             return ["rgb(227, 196, 73)", copy]
         }
     }
@@ -265,16 +265,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 tileWordCopy = firstPass[1]
             }
         })
-        
+
+        let copyForSecondPass = tileWordCopy
         // second pass to get remaining colors
         currentWord.forEach((letter, index) =>{
             if (tileWordCopy[index] !== "."){
-                let secondPass = getNonGreenTileColor(letter, index, tileWordCopy)
+                let secondPass = getNonGreenTileColor(letter, index, copyForSecondPass)
                 colorMap.set(index, secondPass[0])
-                tileWordCopy = secondPass[1] 
+                copyForSecondPass = secondPass[1] 
             }
         })
-        
+    
         // third pass to set and animate the colors and squares
         currentWord.forEach((letter, index) => {
             setTimeout(() => {
