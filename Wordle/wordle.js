@@ -207,19 +207,22 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     // logic accounts for double letter guess when only one instance exists in correct word
-    function getTileColor(letter, index, copy, guessedWord) {
+    function getNonGreenTileColor(letter, index, copy) {
         const isLetterInWord = copy.includes(letter)
         const correctLetterAtIndex = copy.charAt(index)
-        // const guessedWordString = guessedWord.join('')
         
         if (!isLetterInWord){
             return ["rgb(58, 58, 60)", copy]
-        } else if (correctLetterAtIndex === letter){
-            return ["rgb(72, 138, 77)", copy]
         } else {
-            copy = copy.replace(correctLetterAtIndex, '.')
+            copy = setCharAt(copy, index, '.')
             return ["rgb(227, 196, 73)", copy]
         }
+    }
+
+    // similar to replace() function but takes index
+    function setCharAt(str,index,chr) {
+        if(index > str.length-1) return str;
+        return str.substring(0,index) + chr + str.substring(index+1);
     }
 
     // first pass will only color correct tiles green
@@ -227,7 +230,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const correctLetterAtIndex = copy.charAt(index)
 
         if (correctLetterAtIndex === letter){
-            copy = copy.replace(correctLetterAtIndex, '.')
+            copy = setCharAt(copy, index, ".")
             return ["rgb(72, 138, 77)", copy]
         } else {
             return ["rgb(58, 58, 60)", copy]
@@ -247,22 +250,39 @@ document.addEventListener("DOMContentLoaded", () => {
     function setCorrectColors(currentWord){
         const firstSquareID = letters * guessedWordCount + 1
         const interval = 300
+        let squareColor = ''
         let keyColor = ''
         let tileWordCopy = correctWord
         let keyWordCopy = correctWord
+        let colorMap = new Map()
         const guessedWord = getCurrentGuessedWord()
 
-        // set color for squares
+        // first pass to get green colors
+        currentWord.forEach((letter, index) =>{
+            let firstPass = getGreenTiles(letter, index, tileWordCopy)
+            if (firstPass[0] === "rgb(72, 138, 77)"){
+                colorMap.set(index, firstPass[0])
+                tileWordCopy = firstPass[1]
+            }
+        })
+        
+        // second pass to get remaining colors
+        currentWord.forEach((letter, index) =>{
+            if (tileWordCopy[index] !== "."){
+                let secondPass = getNonGreenTileColor(letter, index, tileWordCopy)
+                colorMap.set(index, secondPass[0])
+                tileWordCopy = secondPass[1] 
+            }
+        })
+        
+        // third pass to set and animate the colors and squares
         currentWord.forEach((letter, index) => {
             setTimeout(() => {
-                let squareColor = ''
                 if (hardModeActivated){
                     squareColor = getTileColorHardMode(letter, index)
                 }
                 else{
-                    let result = getTileColor(letter, index, tileWordCopy, guessedWord)
-                    squareColor = result[0]
-                    tileWordCopy = result[1]
+                    squareColor = colorMap.get(index)
                 }
                 const currSquareID = firstSquareID + index
                 const currSquare = document.getElementById(currSquareID)
@@ -281,9 +301,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 keyColor = getTileColorHardMode(currentWord[i], i)
             }
             else{
-                result = getTileColor(currentWord[i], i, keyWordCopy, guessedWord)
-                keyColor = result[0]
-                keyWordCopy = result[1]
+                keyColor = colorMap.get(i)
             }
             if (key.dataset.bestColor != "rgb(72, 138, 77)") {
                 key.dataset.bestColor = keyColor
