@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const hideLetters = document.getElementById("hide-icon")
     let guessedWords = [[]]
     let availableSpace = 1
-    let correctWord = "trope"
+    let correctWord = "geese"
     let guessedWordCount = 0
     let hardModeActivated = false
     
@@ -210,14 +210,27 @@ document.addEventListener("DOMContentLoaded", () => {
     function getTileColor(letter, index, copy, guessedWord) {
         const isLetterInWord = copy.includes(letter)
         const correctLetterAtIndex = copy.charAt(index)
-        const guessedWordString = guessedWord.join('')
+        // const guessedWordString = guessedWord.join('')
         
         if (!isLetterInWord){
             return ["rgb(58, 58, 60)", copy]
         } else if (correctLetterAtIndex === letter){
             return ["rgb(72, 138, 77)", copy]
         } else {
+            copy = copy.replace(correctLetterAtIndex, '.')
             return ["rgb(227, 196, 73)", copy]
+        }
+    }
+
+    // first pass will only color correct tiles green
+    function getGreenTiles(letter, index, copy) {
+        const correctLetterAtIndex = copy.charAt(index)
+
+        if (correctLetterAtIndex === letter){
+            copy = copy.replace(correctLetterAtIndex, '.')
+            return ["rgb(72, 138, 77)", copy]
+        } else {
+            return ["rgb(58, 58, 60)", copy]
         }
     }
 
@@ -234,7 +247,6 @@ document.addEventListener("DOMContentLoaded", () => {
     function setCorrectColors(currentWord){
         const firstSquareID = letters * guessedWordCount + 1
         const interval = 300
-        let squareColor = ''
         let keyColor = ''
         let tileWordCopy = correctWord
         let keyWordCopy = correctWord
@@ -243,11 +255,12 @@ document.addEventListener("DOMContentLoaded", () => {
         // set color for squares
         currentWord.forEach((letter, index) => {
             setTimeout(() => {
+                let squareColor = ''
                 if (hardModeActivated){
                     squareColor = getTileColorHardMode(letter, index)
                 }
                 else{
-                    result = getTileColor(letter, index, tileWordCopy, guessedWord)
+                    let result = getTileColor(letter, index, tileWordCopy, guessedWord)
                     squareColor = result[0]
                     tileWordCopy = result[1]
                 }
