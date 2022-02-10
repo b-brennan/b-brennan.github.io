@@ -257,3 +257,9 @@ span:before {
         line-height: 1rem;
     }
 }
+
+@media (max-height: 730px){
+    .key{
+        height: 48px;
+    }
+}
