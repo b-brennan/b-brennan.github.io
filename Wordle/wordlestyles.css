@@ -169,7 +169,7 @@ span:before {
     display: grid;
     grid-template-rows: repeat(6, 1fr);
     grid-gap: 5px;
-    padding: 10px;
+    padding: 0 10px;
     box-sizing: border-box;
     max-width: 350px;
     max-height: 420px;
@@ -203,6 +203,7 @@ span:before {
     grid-auto-rows: 3em;
     gap: .25em;
     justify-content: center;
+    margin: 8px;
 }
 
 .key {
