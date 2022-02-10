@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const letters = 5
     const guesses = 6
-    const keys = document.querySelectorAll('.keyboard-container button')
+    const keys = document.querySelectorAll('.keyboard-row button')
     const toggle = document.getElementById("cbx")
     const dayIcon = document.getElementById("day")
     const nightIcon = document.getElementById("night")
