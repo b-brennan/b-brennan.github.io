@@ -201,10 +201,8 @@ span:before {
     display: grid;
     grid-template-columns: repeat(20, minmax(auto, 1.25em));
     grid-auto-rows: 3em;
-    grid-gap: .8em;
-    column-gap: .4em;
+    gap: .25em;
     justify-content: center;
-    margin: 0 8px 8px 8px;
 }
 
 .key {
@@ -220,7 +218,6 @@ span:before {
     border-radius: .25em;
     cursor: pointer;
     user-select: none;
-    height: 3.5em;
 }
 
 .key.large {
