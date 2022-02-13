@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const hideLetters = document.getElementById("hide-icon")
     let guessedWords = [[]]
     let availableSpace = 1
-    let correctWord = "vital"
+    let correctWord = "glitz"
     let guessedWordCount = 0
     let hardModeActivated = false
     
@@ -130,53 +130,9 @@ document.addEventListener("DOMContentLoaded", () => {
    
 
     // set theme
-    themeSelector.onclick = () => {
-        //  if (window.getComputedStyle(dayIcon).display === "block") {
-        //      dayIcon.style = "display:none;"
-        //      nightIcon.style = "display:block;"
-        //      document.getElementById("container").style = "background-color:white;"
-        //      document.getElementById("wordle").style = "color: rgb(17, 17, 17);"
-        //      document.getElementById("header").style = "border-bottom: 1px solid gainsboro"
-          
-        //      let modeLabels = document.getElementsByClassName("mode")
-        //      for (let i = 0; i < modeLabels.length; i++) {
-        //          modeLabels[i].style = "color: rgb(17, 17, 17);"
-        //      }
-
-        //      for (let i = 0; i < (letters*guesses); i++) {
-        //         document.getElementById(String(i+1)).style = "border: 2px solid gainsboro; color: rgb(58, 58, 60);"
-        //      }
-        //      console.log(document.getElementById("4").style)
-
-        //      for (let i = 0; i < (keys.length); i++) {
-        //         keys[i].style = "color: rgb(17, 17,17); background-color: gainsboro;"
-        //      }
-
-
-        //      return
-        //  }
-        //  if (window.getComputedStyle(nightIcon).display === "block") {
-        //      nightIcon.style = "display:none;"
-        //      dayIcon.style = "display:block;"
-        //      document.getElementById("container").style = "background-color:rgb(17, 17, 17); border: 1px solid rgb(17, 17, 17);"
-        //      document.getElementById("wordle").style = "color: gainsboro;"
-        //      document.getElementById("header").style = "border-bottom: 1px solid rgb(58, 58, 60), color: gainsboro;"
-
-        //      let modeLabels = document.getElementsByClassName("mode")
-        //      for (let i = 0; i < modeLabels.length; i++) {
-        //          modeLabels[i].style = "color: gainsboro;"
-        //      }
-
-        //      for (let i = 0; i < (letters*guesses); i++) {
-        //         document.getElementById(String(i+1)).style = "2px solid rgb(58, 58, 60); color: gainsboro;"
-        //      }
-
-        //      for (let i = 0; i < (keys.length); i++) {
-        //         keys[i].style = "color: gainsboro; background-color: rgb(129, 131, 132);"
-        //      }
-        //      return
-        //  }
-    }   
+    // themeSelector.onclick = () => {
+        
+    // }   
   
 
     // ensures board looks decent on all devices.
