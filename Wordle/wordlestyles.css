@@ -3,6 +3,16 @@
     padding: 0;
 }
 
+:root {
+    --dark-grey: rgb(17, 17, 17);
+    --gainsboro: gainsboro;
+    --medium-grey: rgb(58, 58, 60);
+    --key-grey: rgb(129, 131, 132);
+    --key-font: rgb(215, 218, 220);
+
+
+}
+
 html, body {
     height: 100%; 
     font-family:Arial, Helvetica, sans-serif;
@@ -11,7 +21,7 @@ html, body {
 
 #container {
     display: flex;
-    background-color: rgb(17, 17, 17);
+    background-color: var(--dark-grey);
     height: 100%;
     align-items: center;
     flex-direction: column;
@@ -32,12 +42,12 @@ header {
     align-items: center;
     justify-content: space-between;
     height: 50px;
-    border-bottom: 1px solid rgb(58, 58, 60);
+    border-bottom: 1px solid var(--medium-grey);
 }
 
 #theme-select {
     align-items: center;
-    color: gainsboro;
+    color: var(--gainsboro);
     text-align: left;  
     z-index: 1;
     margin-left: 5px;
@@ -47,8 +57,6 @@ header {
     font-size: 1.7rem;
     cursor: pointer;
     display: none;
-    color: rgb(17, 17, 17);
-
 }
 
 #day {
@@ -58,7 +66,7 @@ header {
 }
 
 .title {
-    color: gainsboro;
+    color: var(--gainsboro);
     font-size: 2.5rem;
     font-weight: bold;
     margin: 0.4rem 0 0.4rem 0;
@@ -68,7 +76,7 @@ header {
 }
 
 #toggle {
-    color: gainsboro;
+    color: var(--gainsboro);
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -82,7 +90,7 @@ header {
 }
 
 #hide {
-    color: gainsboro;
+    color: var(--gainsboro);
     font-size: 1.5rem;
     z-index: 1;
     cursor: pointer;
@@ -120,7 +128,7 @@ span {
     width: 20px;
     height: 20px;
     display: block;
-    background: gainsboro;
+    background: var(--gainsboro);
     border-radius: 10px;
     box-shadow: 0 3px 8px rgba(#9A9999,.5);
     transition: all .2s ease;
@@ -182,7 +190,7 @@ span:before {
 }
 
 .square {
-    border: 2px solid rgb(58, 58, 60);
+    border: 2px solid var(--medium-grey);
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -191,7 +199,7 @@ span:before {
     font-weight: bold;
     vertical-align: middle;
     box-sizing: border-box;
-    color: gainsboro;
+    color: var(--gainsboro);
     text-transform: uppercase;
     display: inline-flex;
 }
@@ -218,8 +226,8 @@ span:before {
     border-radius: 4px;
     cursor: pointer;
     user-select: none;
-    background-color:rgb(129, 131, 132);
-    color: rgb(215, 218, 220);
+    background-color:var(--key-grey);
+    color: var(--key-font);
     flex: 1;
     display: flex;
     justify-content: center;

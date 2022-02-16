@@ -3,43 +3,49 @@ document.addEventListener("DOMContentLoaded", () => {
     const guesses = 6
     const keys = document.querySelectorAll('.keyboard-row button')
     const toggle = document.getElementById("cbx")
-    const dayIcon = document.getElementById("day")
-    const nightIcon = document.getElementById("night")
-    const themeSelector = document.getElementById("theme-select")
+    // const dayIcon = document.getElementById("day")
+    // const nightIcon = document.getElementById("night")
+    // const themeSelector = document.getElementById("theme-select")
     const hideLetters = document.getElementById("hide-icon")
     let guessedWords = [[]]
     let availableSpace = 1
-    let correctWord = "heart"
+    let correctWord = "troll"
     let guessedWordCount = 0
     let hardModeActivated = false
     
     createSquares(letters, guesses)
     createKeyboard()
     initLocalStorage()
+    loadGameState()
 
 
     // use local storage
     function initLocalStorage() {
-        let storedGuessedWords = JSON.parse(window.localStorage.getItem("guessedWords"))
-        let storedCorrectWord = window.localStorage.getItem("correctWord")
-        let storedAvailableSpace = window.localStorage.getItem("availableSpace")
-        let storedHardMode = window.localStorage.getItem("hardMode")
+        const storedCorrectWord = window.localStorage.getItem("correctWord")
 
-        if (!storedGuessedWords || !storedCorrectWord || !storedAvailableSpace || !storedHardMode) {
-            window.localStorage.setItem("guessedWords", JSON.stringify(guessedWords))
+        if (!storedCorrectWord){
             window.localStorage.setItem("correctWord", correctWord)
-            window.localStorage.setItem("availableSpace", availableSpace)
-            window.localStorage.setItem("hardMode", hardModeActivated)
-        } else {
-            guessedWords = storedGuessedWords
-            availableSpace = Number(storedAvailableSpace)
-            hardModeActivated = getBooleanValue(storedHardMode)
         }
-            
-        if (correctWord === storedCorrectWord){
-            drawGuessedWords(storedGuessedWords)
-            guessedWordCount = guessedWordCount - 1
-        }else {
+        
+    }
+
+    function loadGameState() {
+        const storedGameState = window.localStorage.getItem("gameState")
+        const storedAvailableSpace = window.localStorage.getItem("availableSpace") || 1
+        const storedGuessedWords = JSON.parse(window.localStorage.getItem("guessedWords")) || [[]]
+        const storedGuessedWordCount = window.localStorage.getItem("guessedWordCount") || 0
+        const storedCorrectWord = window.localStorage.getItem("correctWord")
+        const storedHardMode = window.localStorage.getItem("hardMode") || false
+
+        if (storedCorrectWord === correctWord){
+            if (storedGameState){
+                document.getElementById("game").innerHTML = storedGameState
+            }
+            availableSpace = Number(storedAvailableSpace)
+            guessedWords = storedGuessedWords
+            guessedWordCount = Number(storedGuessedWordCount)
+            hardModeActivated = getBooleanValue(storedHardMode)
+        } else {
             window.localStorage.setItem("correctWord", correctWord)
             guessedWords = [[]]
             window.localStorage.setItem("guessedWords", JSON.stringify(guessedWords))
@@ -48,14 +54,19 @@ document.addEventListener("DOMContentLoaded", () => {
             hardModeActivated = false
             window.localStorage.setItem("hardMode", hardModeActivated)
         }
+
     }
 
-    function updateStoredGussedWords(guessedWordsArray){
-        window.localStorage.setItem("guessedWords", JSON.stringify(guessedWordsArray))
+    // used to save progress of game 
+    function saveGameState(){
+        const gameState = document.getElementById("game")
+        window.localStorage.setItem("gameState", gameState.innerHTML)
+        window.localStorage.setItem("availableSpace", availableSpace) 
+        window.localStorage.setItem("guessedWords", JSON.stringify(guessedWords))
+        window.localStorage.setItem("guessedWordCount", guessedWordCount)
+        window.localStorage.setItem("hardMode", hardModeActivated)
     }
-    function updateAvailableSpace(availableSpace){
-        window.localStorage.setItem("availableSpace", availableSpace)
-    }
+
     function updateHardMode(hardMode){
         window.localStorage.setItem("hardMode", hardMode)
     }
@@ -66,34 +77,16 @@ document.addEventListener("DOMContentLoaded", () => {
             return false
         }
     }
-
-    function drawGuessedWords(guessedWords){
-        if (guessedWords[0] === []){
-            return
-        }
-        let squareID = 1
-        
-        numOfGuesses = guessedWords.length
-        for (let i = 0; i < numOfGuesses; i ++){
-            let word = guessedWords[i]
-            for (let j = 0; j < word.length; j++){
-                let square = document.getElementById(String(squareID))
-                square.textContent = word[j]
-                squareID += 1
-            }
-            setCorrectColors(word)
-        }
-    }
     
     // toggle hard mode on and off
     toggle.onclick = () => {
         if (guessedWordCount === 0){
             if (toggle.checked){
                 hardModeActivated = true
-                updateHardMode(hardModeActivated)
+                
             }else {
                 hardModeActivated = false
-                updateHardMode(hardModeActivated)
+                
             }
         }else {
             if (toggle.checked){
@@ -246,6 +239,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 currSquare.classList.add("animate__rollIn")
                 currSquare.style = `background-color:${squareColor}; border-color:${squareColor}` 
 
+                if (index === (letters-1)){
+                    saveGameState()
+                }
+
             }, interval * (index))
         })
 
@@ -264,6 +261,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 key.dataset.bestColor = keyColor
                 key.style = `background-color:${keyColor}`
             }
+            if (i === (letters-1)){
+                saveGameState()
+            }
         }
     }
 
@@ -277,18 +277,15 @@ document.addEventListener("DOMContentLoaded", () => {
         } 
 
         if (currWordString === correctWord){
-            updateStoredGussedWords(guessedWords)
             setCorrectColors(currWord)
             window.alert("You did it! I knew you had it in you...")
         }
         else if (guessedWords.length === guesses) {
-            updateStoredGussedWords(guessedWords)
             setCorrectColors(currWord)
             window.alert(`So close, the word was ${correctWord}! Maybe next time...`)
         }
         else {
             guessedWords.push([])
-            updateStoredGussedWords(guessedWords)
             setCorrectColors(currWord)
         }
     }
@@ -325,7 +322,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         spaceToRemoveFrom.textContent = ''
         availableSpace = availableSpace - 1
-        updateAvailableSpace(availableSpace)
         currWord.pop()
     }
 
@@ -370,7 +366,6 @@ document.addEventListener("DOMContentLoaded", () => {
             currAvailableSpace.textContent = letter
             currAvailableSpace.dataset.dataLetter = String(letter)
             availableSpace = availableSpace + 1 
-            updateAvailableSpace(availableSpace)
         }
 
     }
