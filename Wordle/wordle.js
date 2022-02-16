@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
     initLocalStorage()
     loadGameState()
 
-
     // use local storage
     function initLocalStorage() {
         const storedCorrectWord = window.localStorage.getItem("correctWord")
@@ -30,7 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function loadGameState() {
-        const storedGameState = window.localStorage.getItem("gameState")
+        const storedBoardState = window.localStorage.getItem("boardState")
+        const storedkeyState = window.localStorage.getItem("keyState")
         const storedAvailableSpace = window.localStorage.getItem("availableSpace") || 1
         const storedGuessedWords = JSON.parse(window.localStorage.getItem("guessedWords")) || [[]]
         const storedGuessedWordCount = window.localStorage.getItem("guessedWordCount") || 0
@@ -38,8 +38,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const storedHardMode = window.localStorage.getItem("hardMode") || false
 
         if (storedCorrectWord === correctWord){
-            if (storedGameState){
-                document.getElementById("game").innerHTML = storedGameState
+            if (storedBoardState){
+                document.getElementById("board-container").innerHTML = storedBoardState
+            }
+            if (storedkeyState){
+                document.getElementById("keyboard-container").innerHTML = storedkeyState
+                createKeyboard()
             }
             availableSpace = Number(storedAvailableSpace)
             guessedWords = storedGuessedWords
@@ -59,17 +63,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // used to save progress of game 
     function saveGameState(){
-        const gameState = document.getElementById("game")
-        window.localStorage.setItem("gameState", gameState.innerHTML)
+        const boardState = document.getElementById("board-container")
+        const keyState = document.getElementById("keyboard-container")
+        window.localStorage.setItem("boardState", boardState.innerHTML)
+        window.localStorage.setItem("keyState", keyState.innerHTML)
         window.localStorage.setItem("availableSpace", availableSpace) 
         window.localStorage.setItem("guessedWords", JSON.stringify(guessedWords))
         window.localStorage.setItem("guessedWordCount", guessedWordCount)
         window.localStorage.setItem("hardMode", hardModeActivated)
     }
 
-    function updateHardMode(hardMode){
-        window.localStorage.setItem("hardMode", hardMode)
-    }
+
     function getBooleanValue(bool){
         if (bool === "true"){
             return true
@@ -336,6 +340,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     function createKeyboard(){
+        const keys = document.querySelectorAll('.keyboard-row button')
         for (let i = 0; i < keys.length; i++) {
             keys[i].onclick = ({ target }) => {
                 const key = target.getAttribute("data-key")
