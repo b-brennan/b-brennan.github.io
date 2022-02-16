@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const hideLetters = document.getElementById("hide-icon")
     let guessedWords = [[]]
     let availableSpace = 1
-    let correctWord = "troll"
+    let correctWord = "apply"
     let guessedWordCount = 0
     let hardModeActivated = false
     
