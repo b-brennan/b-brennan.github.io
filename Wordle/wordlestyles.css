@@ -97,6 +97,25 @@ header {
     margin-right: 5px;
 }
 
+#response-modal {
+    position: fixed;
+    border-radius: 8px;
+    border: 1px solid var(--medium-grey);
+    background-color: var(--dark-grey);
+    color: var(--gainsboro);
+    box-shadow: 0 4px 23px 0 rgb(0 0 0 / 20%);
+    width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+    max-width: 400px;
+    padding: 16px;
+    box-sizing: border-box;
+    text-align: center;
+    z-index: 1;
+    align-self:center;
+    margin-top: 25%;
+}
+
 /* start of toggle css*/
 .toggle {
     position: relative;
@@ -256,6 +275,15 @@ span:before {
     to {
         opacity: 100%;
         transform: scale(1)
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: 100%;
+    }
+    to {
+        opacity: 0%;
     }
 }
 

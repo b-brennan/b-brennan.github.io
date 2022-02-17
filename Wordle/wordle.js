@@ -7,9 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // const nightIcon = document.getElementById("night")
     // const themeSelector = document.getElementById("theme-select")
     const hideLetters = document.getElementById("hide-icon")
+    const responseModal = document.getElementById("response-modal")
     let guessedWords = [[]]
     let availableSpace = 1
-    let correctWord = "apply"
+    let correctWord = "ample"
     let guessedWordCount = 0
     let hardModeActivated = false
     
@@ -115,6 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
+        const keys = document.querySelectorAll('.keyboard-row button')
         for (let i = 0; i < keys.length; i++) {
             if (keys[i].dataset.bestColor !== "grey" && keys[i].style.backgroundColor !== "rgb(129, 131, 132)"){
                 keys[i].style = "background-color: rgb(129, 131, 132);"
@@ -168,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return ["rgb(58, 58, 60)", copy]
         } else {
             copy = setCharAt(copy, indexOfLetterInCorrectWord, ".")
-            return ["rgb(227, 196, 73)", copy]
+            return ["rgb(201, 180, 88)", copy]
         }
     }
 
@@ -282,11 +284,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (currWordString === correctWord){
             setCorrectColors(currWord)
-            window.alert("You did it! I knew you had it in you...")
+            setTimeout(() => {
+                responseModal.style = "display:block;"
+                responseModal.innerHTML = "You did it! I knew you had it in you..."
+            }, (310 * letters))
+            setTimeout(() => {
+                responseModal.style = "display:none;"
+                responseModal.innerHTML = ""
+            }, 4000)
+            
         }
         else if (guessedWords.length === guesses) {
             setCorrectColors(currWord)
-            window.alert(`So close, the word was ${correctWord}! Maybe next time...`)
+            setTimeout(() => {
+                responseModal.style = "display:block;"
+                responseModal.innerHTML = `So close, the word was ${correctWord}! Maybe next time...`
+            }, (310 * letters))
         }
         else {
             guessedWords.push([])
