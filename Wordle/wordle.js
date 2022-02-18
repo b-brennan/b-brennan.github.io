@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const responseModal = document.getElementById("response-modal")
     let guessedWords = [[]]
     let availableSpace = 1
-    let correctWord = "ample"
+    let correctWord = "spray"
     let guessedWordCount = 0
     let hardModeActivated = false
     
