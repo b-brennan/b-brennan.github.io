@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const responseModal = document.getElementById("response-modal")
     let guessedWords = [[]]
     let availableSpace = 1
-    let correctWord = "spray"
+    let correctWord = "maybe"
     let guessedWordCount = 0
     let hardModeActivated = false
     
@@ -52,12 +52,13 @@ document.addEventListener("DOMContentLoaded", () => {
             hardModeActivated = getBooleanValue(storedHardMode)
         } else {
             window.localStorage.setItem("correctWord", correctWord)
-            guessedWords = [[]]
-            window.localStorage.setItem("guessedWords", JSON.stringify(guessedWords))
-            availableSpace = 1
-            window.localStorage.setItem("availableSpace", availableSpace)
-            hardModeActivated = false
-            window.localStorage.setItem("hardMode", hardModeActivated)
+
+            window.localStorage.removeItem("guessedWords")
+            window.localStorage.removeItem("availableSpace")
+            window.localStorage.removeItem("guessedWordCount")
+            window.localStorage.removeItem("hardMode")
+            window.localStorage.removeItem("boardState")
+            window.localStorage.removeItem("keyState")
         }
 
     }
