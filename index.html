@@ -8,90 +8,92 @@
         <title>Ben Brennan Portfolio</title>
     </head>
     <body>
-        <header>
-            <div class="container">
-                <h2><span>Ben </span>Brennan</h2>
-                <nav>
-                    <ul id="main"> 
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="#about-me">About Me</a></li>
-                        <li><a href="#contact-list">Contact Me</a></li>
-                        <li><a href="./Wordle/wordleclone.html">Wordle?</a></li>
-                    </ul>
-                </nav>
-                <!-- hamburger that is not visable on desktop view -->
-                <div id="hamburger">
-                    <label id="menuIcon" onclick="openSlide()">&#9776;</label>
+        <div id="conent-wrap"> 
+            <header>
+                <div class="container">
+                    <h2><span>Ben </span>Brennan</h2>
+                    <nav>
+                        <ul id="main"> 
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="#about-me">About Me</a></li>
+                            <li><a href="#contact-list">Contact Me</a></li>
+                            <li><a href="./Wordle/wordleclone.html">Wordle?</a></li>
+                        </ul>
+                    </nav>
+                    <!-- hamburger that is not visable on desktop view -->
+                    <div id="hamburger">
+                        <label id="menuIcon" onclick="openSlide()">&#9776;</label>
+                    </div>
+                    <!-- symbol that is only visable on desktop view -->
+                    <div id="symbol">
+                        <label id="symbol-label"><span>B</span>B</label>
+                    </div>
+                    <!-- slide menu not accessable on desktop view -->
+                    <div id="menuSlide">
+                        <ul>
+                            <li><a href="#" id="buttonClose" onclick="closeSlide()">&times;</a></li>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="#about-me">About Me</a></li>
+                            <li><a href="#contact-list">Contact Me</a></li>
+                            <li><a href="./Wordle/wordleclone.html">Wordle?</a></li>
+                        </ul>
+                    </div>
+                
                 </div>
-                <!-- symbol that is only visable on desktop view -->
-                <div id="symbol">
-                    <label id="symbol-label"><span>B</span>B</label>
-                </div>
-                <!-- slide menu not accessable on desktop view -->
-                <div id="menuSlide">
-                    <ul>
-                        <li><a href="#" id="buttonClose" onclick="closeSlide()">&times;</a></li>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="#about-me">About Me</a></li>
-                        <li><a href="#contact-list">Contact Me</a></li>
-                        <li><a href="./Wordle/wordleclone.html">Wordle?</a></li>
-                    </ul>
-                </div>
-               
-            </div>
 
-        </header>
-        <!-- showcase type section -->
-        <section id="showcase">
-            <div id="showcase-display">
-                <h1>View My Resume <a href="./BenBrennanResume2022.pdf" id="resume">Here</a></h1>
-                <p>I'm a Computer Science major who loves Software Development!</p>
-            </div>
-            <p id="positioning"><a href="#about-me"><span id="down-arrow"></span></a></p>
-        </section>
-        
-        <!-- information on myself? need to add stuff -->
-        <section id="information">
-            <div class="container">
-                <h2 id="about-me">About Me</h2>
-                <p>
-                    Hello! My Name is Ben Brennan, I'm an Application Developer at UniFirst Corporation and a graduate of <a href="https://www.umass.edu/">University of Massachusetts Amherst.</a>
-                    My love of art came to me at an early age and for a while I was confident that I would persue it as a career. After
-                    discovering programming and development in high school, I was searching for a way to combine my two passions.
-                <br>
-                <br>
-                    It wasn't until later on in my college career that I discovered the world of Web Development and Design. It quickly became
-                    apparent that this is what I wanted to do with my future. It is a perfect blend of my creative/artistic and problem solving skill sets.
-                    I'm now looking for a full time job in Web Devlopment/Design. I have experience and familiarty in a variety of front-end 
-                    developmental tools, and a working knowledge with back-end languages as well.
-                </p>
-                <h2>What I know</h2> 
-                <p>
-                    Most of my programming skills and knowledge comes from my experiece in the classroom. In my time in college I've use a variety
-                    of different programing languages that include:
-                    <ul>
-                        <li>Mendix</li>
-                        <li>Java</li>
-                        <li>Python</li>
-                        <li>C/C++</li>
-                    </ul>
-                    More specific to web development, I have other expereice than just the classroom. I have taken web programming
-                    classes but I also have done projects on my own that include this portfolio and a <a href="https://github.com/b-brennan/Workout-Webpage">Workout Webpage</a> that I did as an introduction to this world. The languages that I have expereice with in web development
-                    include:
-                    <ul>
-                        <li>HTML5</li>
-                        <li>CSS3</li>
-                        <li>JavaScript</li>
-                        <li>PHP</li>
-                        <li>Node.js</li>
-                    </ul>
-                    Hopefully this gives an idea as to what sort of knowledge I have. I'm always looking to progress these skills and 
-                    gain new ones.
-                </p>
-            </div>
-        </section>
+            </header>
+            <!-- showcase type section -->
+            <section id="showcase">
+                <div id="showcase-display">
+                    <h1>View My Resume <a href="./BenBrennanResume2022.pdf" id="resume">Here</a></h1>
+                    <p>I'm a Computer Science major who loves Software Development!</p>
+                </div>
+                <p id="positioning"><a href="#about-me"><span id="down-arrow"></span></a></p>
+            </section>
+            
+            <!-- information on myself? need to add stuff -->
+            <section id="information">
+                <div class="container">
+                    <h2 id="about-me">About Me</h2>
+                    <p>
+                        Hello! My Name is Ben Brennan, I'm an Application Developer at UniFirst Corporation and a graduate of <a href="https://www.umass.edu/">University of Massachusetts Amherst.</a>
+                        My love of art came to me at an early age and for a while I was confident that I would persue it as a career. After
+                        discovering programming and development in high school, I was searching for a way to combine my two passions.
+                    <br>
+                    <br>
+                        It wasn't until later on in my college career that I discovered the world of Web and Application Development. It quickly became
+                        apparent that this is what I wanted to do with my future. It is a perfect blend of my creative/artistic and problem solving skill sets.
+                        I'm now looking for a full time job in Application Devlopment. I have experience and familiarty in a variety of front-end 
+                        developmental tools, and a working knowledge with back-end languages as well.
+                    </p>
+                    <h2>What I know</h2> 
+                    <p>
+                        My Programming skills and knowledge come from my experience as an Application Developer working on production level software, but also
+                        the personal projects I work on for fun and to expand my capabilities. In my time working and in college I've use a variety
+                        of different programing languages that include:
+                        <ul>
+                            <li>Mendix</li>
+                            <li>Python</li>
+                            <li>Java</li>
+                            <li>C/C++</li>
+                        </ul>
+                        More specific to Web and Application development, these are some of the tools I'm most experienced in
+                        <ul>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>Flask</li>
+                            <li>PHP</li>
+                            <li>Node.js</li>
+                        </ul>
+                        Hopefully this gives an idea as to what sort of knowledge I have. I'm always looking to progress these skills and 
+                        gain new ones.
+                    </p>
+                </div>
+            </section>
+        </div>
         <!-- footer stuff -->
         <footer>
             <div class="container">
