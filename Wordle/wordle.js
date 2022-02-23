@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const responseModal = document.getElementById("response-modal")
     let guessedWords = [[]]
     let availableSpace = 1
-    let correctWord = "exile"
+    let correctWord = "sleek"
     let guessedWordCount = 0
     let hardModeActivated = false
     
@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
 
-    // This will allow user to use phiscal keyboard as well as one in game
+    // This will allow user to use physical keyboard as well as one in game
     window.addEventListener("keydown", (e) =>{
         const pressedLetter = e.key.toLowerCase()
         if (pressedLetter === 'enter'){
