@@ -32,6 +32,7 @@ header {
     background-color: rgb(247, 248, 250);
     color: dimgray;
     height: 80px;
+    z-index:1;
 }
 
 header h2 {
@@ -368,8 +369,7 @@ img {
     
     .nav-menu {
         position: fixed;
-        left: -110%;
-        /* display: none; */
+        left: -115%;
         top: 60px;
         gap: 0;
         flex-direction: column;
@@ -377,45 +377,21 @@ img {
         width: 100%;
         align-items: center;
         transition: 0.3s;
-        /* box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.2); */
+       
     }
     .nav-item{
-        margin-left: -10%;
+        margin-left: -15%;
         margin-bottom: 1rem;
     }
 
     .nav-menu.active {
         left: 0;
-        /* display: block; */
     }
 
     header #symbol {
         display: none;
     } 
     
-    /* header nav {
-        display: none;
-    }
-
-    header label {
-        margin-top: -50px;
-    }
-
-    header #menuSlide a{
-        font-size: 12px;
-    }
-
-    header #menuSlide ul {
-        padding-left: 15px;
-    }
-
-    header #hamburger {
-        display: block;
-    }
-
-    header #symbol {
-        display: none;
-    } */
 
     /* Section */
 
