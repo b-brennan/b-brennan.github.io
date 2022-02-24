@@ -26,108 +26,95 @@ body {
 /* Header */
 
 header {
-    /* background-color: rgb(242, 244, 247); */
+    position: fixed;
+    width: 100%;
+    top: 0;
     background-color: rgb(247, 248, 250);
     color: dimgray;
     height: 80px;
 }
 
-header nav {
-    text-align: center;
-    margin-top: -42px;
-    font-size: 16px;
-    
-}
-
 header h2 {
-    margin-top: 0;
-    padding: 20px 0 0 0;
-    font-size: 20px;
+    font-size: 1.5rem;
 }
 
 header span {
     color: black;
-
 }
 
 header li {
-    display: inline;
-    padding: 0 30px 0 0;
-
+    list-style: none;
 }
 
 header a {
-    text-decoration: none;
     color: dimgray;
-    padding: 5px 5px 5px 5px;
+    text-decoration: none;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
 }
 
-header #main a:hover {
-    background-color: rgb(242, 242, 242);
-    border-radius: 5px;
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+    left: 0;
+    justify-self: flex-end;
 }
 
 header label {
     font-size: 20px;
     float: right;
-    margin-top: -45px;
     position: relative;
     padding: 5px 10px;
-    /* display: none; */
+    
 }
 
-header #hamburger {
-    display: none;
-}
-
-
-header #symbol-label {
-    /* border-radius: 50%; */
+#symbol-label {
     background-color: rgb(242, 242, 242);
     border: 2px solid dimgray;
     font-weight: 550;
 }
 
 
-header #menuSlide ul {
-    padding: 0 0 0 20px;
-
+.nav-link {
+    transition: 0.7s ease;
 }
 
-header #menuSlide {
-    height: 100%;
-    overflow-x: hidden;
-    background-color: #111;
-    opacity: 90%;
-    width: 25%;
-    top: 0;
-    transition: .5s;
-    position: fixed;
-    width: 0;
-    margin-left: 100%;
-    z-index: 1;
+.nav-link:hover {
+    color: black;
 }
 
-header #menuSlide a{
-    color: white;
-    font-size: 15px;
-    padding: 5px 0 0 0;
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
     display: block;
-    margin: 5px 0;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: dimgray;
+
 }
 
-header #menuSlide #buttonClose{
-    font-size: 30px;
-    margin-top: -10px
-}
+
 
 /* Section */
 
 #showcase {
     background: linear-gradient( rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.62) ), url("./wallpaper2.jpg") no-repeat center;
     background-size: cover;
-    height: 95vh
+    height: 95vh;
+    margin-top: 80px;
 }
 
 #showcase h1 {
@@ -294,6 +281,10 @@ footer #copyright a {
 
 /* Project file */
 
+#projects{
+    margin-top: 80px;
+}
+
 #cards-flex-container {
     display: flex; 
     flex-direction: row;
@@ -343,6 +334,12 @@ img {
     }
 }
 
+@media only screen and (max-width: 880px){
+    .nav-menu {
+        gap: 1.5rem;
+    }
+}
+
 
 
 
@@ -354,8 +351,49 @@ img {
     }
 
     /* Header */
+
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
     
-    header nav {
+    .nav-menu {
+        position: fixed;
+        left: -110%;
+        /* display: none; */
+        top: 60px;
+        gap: 0;
+        flex-direction: column;
+        background-color: rgb(247, 248, 250);
+        width: 100%;
+        align-items: center;
+        transition: 0.3s;
+        /* box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.2); */
+    }
+    .nav-item{
+        margin-left: -10%;
+        margin-bottom: 1rem;
+    }
+
+    .nav-menu.active {
+        left: 0;
+        /* display: block; */
+    }
+
+    header #symbol {
+        display: none;
+    } 
+    
+    /* header nav {
         display: none;
     }
 
@@ -377,7 +415,7 @@ img {
 
     header #symbol {
         display: none;
-    }
+    } */
 
     /* Section */
 
