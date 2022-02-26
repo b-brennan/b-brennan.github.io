@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const responseModal = document.getElementById("response-modal")
     let guessedWords = [[]]
     let availableSpace = 1
-    let correctWord = "jaded"
+    let correctWord = "hover"
     let guessedWordCount = 0
     let hardModeActivated = false
     
@@ -301,6 +301,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 responseModal.style = "display:block;"
                 responseModal.innerHTML = `So close, the word was ${correctWord}! Maybe next time...`
             }, (310 * letters))
+            setTimeout(() => {
+                responseModal.style = "display:none;"
+                responseModal.innerHTML = ""
+            }, 4000)
         }
         else {
             guessedWords.push([])
