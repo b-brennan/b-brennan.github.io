@@ -10,26 +10,51 @@ document.addEventListener("DOMContentLoaded", () => {
     const responseModal = document.getElementById("response-modal")
     let guessedWords = [[]]
     let availableSpace = 1
-    let correctWord = "scrap"
     let guessedWordCount = 0
     let hardModeActivated = false
+    let wordList = ['treat', 'sleep', 'nasty', 'ready', 'quest', 'exist', 'crate', 'macho', 'obese', 'abide', 'jeans',
+    'count', 'month', 'kneel', 'scare', 'shave', 'train', 'boast', 'solve', 'scent', 'paste', 'offer', 'sound', 'first',
+    'heave', 'violet', 'stone', 'front', 'start', 'dwell', 'fruit', 'savor', 'fling', 'argue', 'force', 'ferry', 'bored',
+    'chore', 'nurse', 'press', 'hurry', 'milky', 'shade', 'cabin', 'eager', 'cable', 'fungi', 'quill', 'utter', 'cabob',
+    'often', 'label', 'lymph', 'pacer', 'armor', 'visor', 'yodel', 'smoke', 'pride', 'wield', 'ghost', 'laker', 'brain', 
+    'yikes', 'swell', 'brake', 'wreck', 'watch', 'index', 'gross', 'plant', 'coach', 'straw', 'grape', 'snake', 'grade',
+    'under', 'outer', 'crawl', 'nudge', 'power', 'grass', 'order', 'swipe', 'mango', 'trash', 'clean', 'llama', 'squat', 
+    'water', 'swing', 'trade', 'story', 'quail', 'paste', 'brave', 'hinge', 'brang', 'white', 'zesty', 'viral', 'saber']
+
+    // new word each day of the year
+    const monthLengths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    const currDateTime = new Date()
+    const month = currDateTime.getMonth()
+    let dayNum = 0
+    for (let i = 0; i < month; i++){
+        dayNum += monthLengths[i]
+    }
+    dayNum += currDateTime.getDate()
+    const correctWord = wordList[dayNum]
+
     
     createSquares(letters, guesses)
     createKeyboard()
     initLocalStorage()
     loadGameState()
 
+    
     // use local storage
     function initLocalStorage() {
         const storedCorrectWord = window.localStorage.getItem("correctWord")
-
         if (!storedCorrectWord){
             window.localStorage.setItem("correctWord", correctWord)
         }
         
     }
 
+    // pick new word every 24 hours
+    
+
+
+    // reload game if in progress, reset if new word
     function loadGameState() {
+        
         const storedBoardState = window.localStorage.getItem("boardState")
         const storedkeyState = window.localStorage.getItem("keyState")
         const storedAvailableSpace = window.localStorage.getItem("availableSpace") || 1
@@ -37,6 +62,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const storedGuessedWordCount = window.localStorage.getItem("guessedWordCount") || 0
         const storedCorrectWord = window.localStorage.getItem("correctWord")
         const storedHardMode = window.localStorage.getItem("hardMode") || false
+        const storedWordIndex = Number(window.localStorage.getItem("wordIndex")) || 0
+    
 
         if (storedCorrectWord === correctWord){
             if (storedBoardState){
@@ -50,6 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
             guessedWords = storedGuessedWords
             guessedWordCount = Number(storedGuessedWordCount)
             hardModeActivated = getBooleanValue(storedHardMode)
+            wordIndex = Number(storedWordIndex)
+    
         } else {
             window.localStorage.setItem("correctWord", correctWord)
 
@@ -73,6 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
         window.localStorage.setItem("guessedWords", JSON.stringify(guessedWords))
         window.localStorage.setItem("guessedWordCount", guessedWordCount)
         window.localStorage.setItem("hardMode", hardModeActivated)
+        // window.localStorage.setItem("wordIndex", wordIndex)
     }
 
 
