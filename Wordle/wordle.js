@@ -19,7 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
     'often', 'label', 'lymph', 'pacer', 'armor', 'visor', 'yodel', 'smoke', 'pride', 'wield', 'ghost', 'laker', 'brain', 
     'yikes', 'swell', 'brake', 'wreck', 'watch', 'index', 'gross', 'plant', 'coach', 'straw', 'grape', 'snake', 'grade',
     'under', 'outer', 'crawl', 'nudge', 'power', 'grass', 'order', 'swipe', 'mango', 'trash', 'clean', 'llama', 'squat', 
-    'water', 'swing', 'trade', 'story', 'quail', 'paste', 'brave', 'hinge', 'brang', 'white', 'zesty', 'viral', 'saber']
+    'water', 'swing', 'trade', 'story', 'quail', 'paste', 'brave', 'hinge', 'brang', 'white', 'zesty', 'viral', 'saber',
+    'there', 'snort', 'slate', 'chart', 'moral', 'spoke', 'break', 'xerox', 'heave', 'organ', 'wrote', 'green', 'shrug']
 
     // new word each day of the year
     const monthLengths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
