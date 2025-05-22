@@ -14,9 +14,7 @@ body {
     min-height: 100vh;
 }
 
-#conent-wrap {
-    padding-bottom: 22rem;
-}
+#content-wrap {    padding-bottom: 22rem;}
 
 .container {
     width: 95%;
@@ -184,19 +182,90 @@ header label {
     background-color: rgb(247, 248, 250);
     padding: 10px 20% 10px 20%;
     line-height: 1.8;
-    
 }
 
 #information h2 {
-    font-size: 25px
+    font-size: 28px;
+    color: #2a2a2a;
+    margin-top: 2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+#information h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background: lightgreen;
 }
 
 #information p {
-    font-size: 17px; 
+    font-size: 17px;
+    color: #4a4a4a;
 }
 
 #information a {
     color: rgb(245, 78, 134);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#information a:hover {
+    color: rgb(200, 50, 100);
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.skills-category {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.skills-category h3 {
+    color: #2a2a2a;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 20px;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skills-list li {
+    padding: 0.5rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+    color: #4a4a4a;
+}
+
+.skills-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: lightgreen;
+}
+
+@media only screen and (max-width: 768px) {
+    #information {
+        padding: 10px 5% 10px 5%;
+    }
+    
+    .skills-container {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Footer */
@@ -282,56 +351,107 @@ footer #copyright a {
 
 /* Project file */
 
-#projects{
+#projects {
     margin-top: 80px;
+    padding: 2rem 0;
+    background-color: rgb(247, 248, 250);
 }
 
 #cards-flex-container {
-    display: flex; 
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 95%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    width: 90%;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 20px 0 ;
+    padding: 20px 0;
 }
 
 .card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    border-radius: 5px; 
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
 .card-container {
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    align-items: center; 
-    justify-content: center;
+    flex-grow: 1;
+    gap: 1rem;
 }
 
-img {
-    width: 300px;
-    height: 200px;
-    border-radius: 5px 5px 0 0;
-  }
+.card-container h4 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #2a2a2a;
+    font-weight: 600;
+}
 
-.card-container a {
-    background-color: rgb(77, 109, 214);
-    border-radius: 3px;
-    padding: 4px;
+.card-container p {
+    margin: 0;
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.card-container .btn-view {
+    display: inline-block;
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
     color: white;
     text-decoration: none;
-    margin-bottom: 5px;
-}  
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+    text-align: center;
+    transition: all 0.3s ease;
+    margin-top: auto;
+    border: none;
+    cursor: pointer;
+}
 
-@media only screen and (max-width: 1283px){
+.card-container .btn-view:hover {
+    background: linear-gradient(135deg, #45a049 0%, #3d8b3d 100%);
+    transform: translateY(-2px);
+}
+
+.card-container .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.card-container .tech-tag {
+    background: #f0f0f0;
+    color: #666;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+}
+
+@media only screen and (max-width: 1283px) {
     #cards-flex-container {
-        flex-direction: column;
-
-    }
-
-    .card {
-        margin-bottom: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        width: 95%;
     }
 }
 
@@ -466,13 +586,18 @@ img {
     
 
     /* Project file */
-    #cards-flex-container {
-        flex-direction: column;
-
+    #projects {
+        margin-top: 60px;
+        padding: 1rem 0;
     }
 
-    .card {
-        margin-bottom: 10px;
+    #cards-flex-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .card-container {
+        padding: 1.25rem;
     }
 
     
